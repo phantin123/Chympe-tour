@@ -35,7 +35,7 @@ header p { max-width: 800px; margin: auto; }
 .btn:hover { background: #055b45; }
 
 section {
-    padding: 40px 20px;
+    padding:20px;
     max-width: 1100px;
     margin: auto;
 }
@@ -59,6 +59,38 @@ h2 { text-align: center; color: #0a7c5f; }
 .card:hover {
     transform: translateY(-6px);
     box-shadow: 0 10px 25px rgba(0,0,0,0.2);
+}
+
+.card h3 {
+    font-size: 22px;
+    margin-bottom: 8px;
+    color: #222;
+}
+
+.price {
+    font-size: 26px;
+    font-weight: bold;
+    color: #0f8f6f;
+    margin-bottom: 12px;
+}
+
+.card-line {
+    width: 60px;
+    height: 3px;
+    background: linear-gradient(90deg, #0f8f6f, #3ddc97);
+    margin: 0 auto 12px;
+    border-radius: 5px;
+}
+
+.card-action {
+    font-size: 14px;
+    color: #555;
+    font-weight: 500;
+    transition: 0.3s;
+}
+
+.card:hover .card-action {
+    color: #0f8f6f;
 }
 
 .price {
@@ -134,13 +166,14 @@ ul { padding-left: 20px; }
 
 <header>
     <h1>Chympe Day Tour</h1>
-    <p>Enjoy a beautiful day tour with fair and negotiable pricing, managed by the local community.</p>
+    <p style="font-size:20px;">Enjoy a beautiful day tour with fair and negotiable pricing, managed by the local community.</p>
     <a href="#packages" class="btn">View Packages</a>
 </header>
 
 <section>
+    <br />
     <h2>🌿 About Chympe</h2>
-    <p>Chympe is a beautiful natural destination featuring waterfalls, caves, hanging bridges and lush green views. Perfect for adventure and nature lovers.</p>
+    <p>Escape into the heart of nature and discover the untouched beauty of Chympe. Surrounded by lush green forests, crystal-clear waterfalls, and serene landscapes, Chympe offers the perfect getaway for adventure lovers and peace seekers alike.</p>
 </section>
 
 <section id="packages">
@@ -150,21 +183,30 @@ ul { padding-left: 20px; }
     <div class="card" onclick="openModal('solo')">
         <h3>Solo</h3>
         <p class="price">₹5,450</p>
+        <div class="card-line"></div>
+        <span class="card-action">View Details →</span>
     </div>
+
 
     <div class="card" onclick="openModal('two')">
         <h3>2 Persons</h3>
         <p class="price">₹2,950 / person</p>
+        <div class="card-line"></div>
+        <span class="card-action">View Details →</span>
     </div>
 
     <div class="card" onclick="openModal('group')">
         <h3>3–4 Persons</h3>
         <p class="price">₹1,950 / person</p>
+        <div class="card-line"></div>
+        <span class="card-action">View Details →</span>
     </div>
 
     <div class="card" onclick="openModal('large')">
         <h3>5–6 Persons</h3>
         <p class="price">₹1,450 / person</p>
+        <div class="card-line"></div>
+        <span class="card-action">View Details →</span>
     </div>
 </div>
 </section>
@@ -176,17 +218,22 @@ ul { padding-left: 20px; }
     <div class="card" onclick="openModal('rainSolo')">
         <h3>Solo</h3>
         <p class="price">₹1,550</p>
+        <div class="card-line"></div>
+        <span class="card-action">View Details →</span>
     </div>
 
     <div class="card" onclick="openModal('rainGroup')">
         <h3>2–6 Persons</h3>
         <p class="price">₹450 / person</p>
+        <div class="card-line"></div>
+        <span class="card-action">View Details →</span>
     </div>
 </div>
+<br />
 </section>
 
 <footer>
-    <p>📍 Chympe Waterfall | Brishyrnot Welfare Association</p>
+    <p>© 2026 Chympe Day Tour | All Rights Reserved</p>
 </footer>
 
 <a class="whatsapp" href="https://wa.me/91XXXXXXXXXX" target="_blank">💬</a>
