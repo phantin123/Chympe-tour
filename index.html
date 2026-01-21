@@ -1,0 +1,260 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Chympe Waterfall Tour</title>
+
+<style>
+body {
+    margin: 0;
+    font-family: Arial, sans-serif;
+    background: #f4f9f9;
+}
+
+header {
+    background: url('bg.png') center/cover no-repeat;
+    color: white;
+    text-align: center;
+    padding: 80px 20px;
+}
+
+header h1 { font-size: 40px; }
+header p { max-width: 800px; margin: auto; }
+
+.btn {
+    background: #0a7c5f;
+    color: white;
+    padding: 12px 25px;
+    border-radius: 5px;
+    text-decoration: none;
+    display: inline-block;
+    margin-top: 15px;
+    transition: 0.3s;
+}
+.btn:hover { background: #055b45; }
+
+section {
+    padding: 40px 20px;
+    max-width: 1100px;
+    margin: auto;
+}
+
+h2 { text-align: center; color: #0a7c5f; }
+
+.cards {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 20px;
+}
+
+.card {
+    background: white;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+    cursor: pointer;
+    transition: 0.3s;
+}
+.card:hover {
+    transform: translateY(-6px);
+    box-shadow: 0 10px 25px rgba(0,0,0,0.2);
+}
+
+.price {
+    font-size: 20px;
+    color: #0a7c5f;
+    font-weight: bold;
+}
+
+footer {
+    background: #0a7c5f;
+    color: white;
+    text-align: center;
+    padding: 20px;
+}
+
+.whatsapp {
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    background: #25D366;
+    color: white;
+    padding: 15px 18px;
+    border-radius: 50%;
+    font-size: 20px;
+    text-decoration: none;
+}
+
+/* Modal */
+.modal {
+    display: none;
+    position: fixed;
+    inset: 0;
+    background: rgba(0,0,0,0.7);
+    z-index: 999;
+}
+
+.modal-content {
+    background: white;
+    margin: auto;
+    margin-top: 80px;
+    padding: 25px;
+    width: 90%;
+    max-width: 500px;
+    border-radius: 10px;
+    animation: slideUp 0.3s;
+}
+
+@keyframes slideUp {
+    from { transform: translateY(50px); opacity: 0; }
+    to { transform: translateY(0); opacity: 1; }
+}
+
+.close {
+    float: right;
+    font-size: 22px;
+    cursor: pointer;
+    color: red;
+}
+
+.price-box {
+    background: #eafff7;
+    padding: 10px;
+    border-radius: 8px;
+    margin: 10px 0;
+    font-weight: bold;
+}
+
+ul { padding-left: 20px; }
+</style>
+</head>
+
+<body>
+
+<header>
+    <h1>Chympe Day Tour</h1>
+    <p>Enjoy a beautiful day tour with fair and negotiable pricing, managed by the local community.</p>
+    <a href="#packages" class="btn">View Packages</a>
+</header>
+
+<section>
+    <h2>🌿 About Chympe</h2>
+    <p>Chympe is a beautiful natural destination featuring waterfalls, caves, hanging bridges and lush green views. Perfect for adventure and nature lovers.</p>
+</section>
+
+<section id="packages">
+<h2>☀️ Dry Season Packages</h2>
+
+<div class="cards">
+    <div class="card" onclick="openModal('solo')">
+        <h3>Solo</h3>
+        <p class="price">₹5,450</p>
+    </div>
+
+    <div class="card" onclick="openModal('two')">
+        <h3>2 Persons</h3>
+        <p class="price">₹2,950 / person</p>
+    </div>
+
+    <div class="card" onclick="openModal('group')">
+        <h3>3–4 Persons</h3>
+        <p class="price">₹1,950 / person</p>
+    </div>
+
+    <div class="card" onclick="openModal('large')">
+        <h3>5–6 Persons</h3>
+        <p class="price">₹1,450 / person</p>
+    </div>
+</div>
+</section>
+
+<section>
+<h2>🌧️ Rainy Season</h2>
+
+<div class="cards">
+    <div class="card" onclick="openModal('rainSolo')">
+        <h3>Solo</h3>
+        <p class="price">₹1,550</p>
+    </div>
+
+    <div class="card" onclick="openModal('rainGroup')">
+        <h3>2–6 Persons</h3>
+        <p class="price">₹450 / person</p>
+    </div>
+</div>
+</section>
+
+<footer>
+    <p>📍 Chympe Waterfall | Brishyrnot Welfare Association</p>
+</footer>
+
+<a class="whatsapp" href="https://wa.me/91XXXXXXXXXX" target="_blank">💬</a>
+
+<!-- MODAL -->
+<div id="packageModal" class="modal">
+<div class="modal-content">
+    <span class="close" onclick="closeModal()">×</span>
+    <h3 id="modalTitle"></h3>
+    <div class="price-box" id="modalPrice"></div>
+    <ul id="modalList"></ul>
+    <p id="modalNote"></p>
+</div>
+</div>
+
+<script>
+function openModal(type) {
+    let title="", price="", list="", note="";
+
+    if(type==="solo"){
+        title="Solo Package";
+        price="₹5,450";
+        list="<li>Guide</li><li>4x4 Vehicle</li><li>Cave Entry</li><li>Registration</li>";
+        note="Best for solo travelers.";
+    }
+    if(type==="two"){
+        title="2 Persons";
+        price="₹2,950 per person";
+        list="<li>Guide</li><li>Shared Vehicle</li><li>Cave Entry</li><li>Registration</li>";
+        note="Most popular package.";
+    }
+    if(type==="group"){
+        title="3–4 Persons";
+        price="₹1,950 per person";
+        list="<li>Guide</li><li>Shared Vehicle</li><li>Cave Entry</li>";
+        note="Perfect for families & friends.";
+    }
+    if(type==="large"){
+        title="5–6 Persons";
+        price="₹1,450 per person";
+        list="<li>Guide</li><li>Shared Vehicle</li><li>Cave Entry</li>";
+        note="Best value group package.";
+    }
+    if(type==="rainSolo"){
+        title="Rainy Season – Solo";
+        price="₹1,550";
+        list="<li>Guide</li><li>Registration</li><li>Nature Walk</li>";
+        note="Vehicle & cave not available.";
+    }
+    if(type==="rainGroup"){
+        title="Rainy Season – Group";
+        price="₹450 per person";
+        list="<li>Guide</li><li>Registration</li><li>Waterfall View</li>";
+        note="Best during monsoon.";
+    }
+
+    document.getElementById("modalTitle").innerHTML = title;
+    document.getElementById("modalPrice").innerHTML = price;
+    document.getElementById("modalList").innerHTML = list;
+    document.getElementById("modalNote").innerHTML = note;
+
+    document.getElementById("packageModal").style.display = "block";
+}
+
+function closeModal() {
+    document.getElementById("packageModal").style.display = "none";
+}
+</script>
+
+</body>
+</html>
